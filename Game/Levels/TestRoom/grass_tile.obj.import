@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/grass_tile.obj-15918b905f9778e73c090e4e119ae84b.mesh"
+
+[deps]
+
+files=[ "res://.import/grass_tile.obj-15918b905f9778e73c090e4e119ae84b.mesh" ]
+
+source_file="res://Levels/TestRoom/grass_tile.obj"
+dest_files=[ "res://.import/grass_tile.obj-15918b905f9778e73c090e4e119ae84b.mesh", "res://.import/grass_tile.obj-15918b905f9778e73c090e4e119ae84b.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
