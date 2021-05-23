@@ -1,43 +1,90 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Levels/TestRoom/bulding_segment.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://Levels/TestRoom/building_texture.png" type="Texture" id=2]
 [ext_resource path="res://Levels/TestRoom/Window.tscn" type="PackedScene" id=3]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
 
-[node name="TestBuilding" type="Spatial"]
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 8, 3 )
 
-[node name="bulding_segment" type="MeshInstance" parent="."]
-mesh = ExtResource( 1 )
-material/0 = SubResource( 1 )
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 12, 6, 12 )
 
-[node name="bulding_segment2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
-mesh = ExtResource( 1 )
-material/0 = SubResource( 1 )
+[node name="TestBuilding" type="StaticBody"]
 
 [node name="Window5" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2.47682, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.47682, 4 )
 
 [node name="Window7" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.47682, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 5.47682, 4 )
 
 [node name="Window4" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.47682, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5.47682, 4 )
+
+[node name="Window6" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 5.47682, 4 )
 
 [node name="Window8" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 8.47682, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4768, 4 )
 
 [node name="Window10" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 8.47682, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 13.4768, 4 )
 
 [node name="Window9" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.47682, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 5.47682, 4 )
 
 [node name="Window11" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 8.47682, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 13.4768, 4 )
 
 [node name="Window14" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 8.47682, 4 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 13.4768, 4 )
+
+[node name="Window15" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 13.4768, 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 5, 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 14, 4 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( -1.31134e-07, 0, 1, 0, 3, 0, -3, 0, -4.37114e-08, 12, 5, -8 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( -1.31134e-07, 0, 1, 0, 3, 0, -3, 0, -4.37114e-08, 12, 14, -8 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 3.93402e-07, 0, -1, 0, 3, 0, 3, 0, 1.31134e-07, -12, 5, -8 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( 3.93402e-07, 0, -1, 0, 3, 0, 3, 0, 1.31134e-07, -12, 14, -8 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance7" type="MeshInstance" parent="."]
+transform = Transform( -3, 0, -8.74228e-08, 0, 3, 0, 2.62268e-07, 0, -1, 9.53674e-07, 5, -20 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance8" type="MeshInstance" parent="."]
+transform = Transform( -3, 0, -8.74228e-08, 0, 3, 0, 2.62268e-07, 0, -1, 9.53674e-07, 14, -20 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.51211, -8 )
+shape = SubResource( 3 )
