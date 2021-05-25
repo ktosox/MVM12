@@ -8,8 +8,7 @@ func _ready():
 
 
 func player_enetered():
-	print("player enetered checkpoint ",self)
-	#this should activate the relevant method in the singleton that tracks current active checkpoint
+	GM.update_checkpoint(self)
 	pass
 
 

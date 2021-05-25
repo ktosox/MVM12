@@ -13,6 +13,10 @@ config_version=4
 config/name="Metroidvania Game"
 config/icon="res://icon.png"
 
+[autoload]
+
+GM="*res://Managers/GameManager.tscn"
+
 [display]
 
 window/size/width=1280
