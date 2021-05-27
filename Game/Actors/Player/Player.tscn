@@ -1,16 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Resources/Fruits/Singles/08_Durian.png" type="Texture" id=1]
 [ext_resource path="res://Resources/Fruits/Singles/05_CustardApple.png" type="Texture" id=2]
 [ext_resource path="res://Actors/Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://Actors/Player/Attack.gd" type="Script" id=4]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.4
 height = 1.2
 
+[sub_resource type="CylinderShape" id=2]
+radius = 0.785299
+height = 0.396417
+
 [node name="Player" type="KinematicBody"]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 768
 script = ExtResource( 3 )
 
 [node name="Placeholder" type="Sprite3D" parent="."]
@@ -34,3 +39,14 @@ fov = 60.0
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="Attack" type="Spatial" parent="."]
+script = ExtResource( 4 )
+
+[node name="AttackBox" type="Area" parent="Attack"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.366339, 0.676953 )
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape" parent="Attack/AttackBox"]
+shape = SubResource( 2 )

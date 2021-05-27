@@ -1,19 +1,25 @@
 extends KinematicBody
 
+export var moveSpeed = 3.0
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var direction = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM.currentPlayer = self
 	pass # Replace with function body.
 
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		$Attack.strike()
+
 func _physics_process(delta):
-	var direction = get_input()
-	move_and_collide(direction * 2 * delta)
+	 
+	direction = get_input()
+	if (direction.length() > 0):
+		$Attack.rotation.y = atan2(direction.x,direction.y)
+	move_and_collide(Vector3(direction.x,0,direction.y) * moveSpeed * delta)
 	
 		
 	pass
@@ -23,9 +29,6 @@ func get_input():
 	dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	dir.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	dir = dir.normalized()
-	return Vector3(dir.x,0,dir.y)
-	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	return dir
+	pass

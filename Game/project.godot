@@ -31,6 +31,11 @@ enabled=PoolStringArray( "res://addons/AutoGrid/plugin.cfg" )
 [layer_names]
 
 3d_physics/layer_2="Player"
+3d_physics/layer_3="Player Attack"
+3d_physics/layer_6="Enemy"
+3d_physics/layer_7="Enemy Attack"
+3d_physics/layer_9="Walls"
+3d_physics/layer_10="Objects"
 
 [physics]
 
