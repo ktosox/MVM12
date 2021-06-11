@@ -12,143 +12,143 @@
 [ext_resource path="res://Resources/CityBase/pavement_NE.png" type="Texture" id=10]
 [ext_resource path="res://Resources/CityBase/pavement_W.png" type="Texture" id=11]
 
-[sub_resource type="PlaneMesh" id=4]
+[sub_resource type="PlaneMesh" id=1]
 resource_name = "res://Levels/TestRoom/Pavement.agrid"
 size = Vector2( 1, 1 )
 
-[sub_resource type="SpatialMaterial" id=25]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 1 )
 
-[sub_resource type="ConcavePolygonShape" id=6]
+[sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5 )
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_texture = ExtResource( 2 )
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=5]
 albedo_texture = ExtResource( 3 )
 
-[sub_resource type="SpatialMaterial" id=11]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_texture = ExtResource( 4 )
 
-[sub_resource type="SpatialMaterial" id=13]
+[sub_resource type="SpatialMaterial" id=7]
 albedo_texture = ExtResource( 5 )
 
-[sub_resource type="SpatialMaterial" id=15]
+[sub_resource type="SpatialMaterial" id=8]
 albedo_texture = ExtResource( 6 )
 
-[sub_resource type="SpatialMaterial" id=17]
+[sub_resource type="SpatialMaterial" id=9]
 albedo_texture = ExtResource( 7 )
 
-[sub_resource type="SpatialMaterial" id=18]
+[sub_resource type="SpatialMaterial" id=10]
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="SpatialMaterial" id=20]
+[sub_resource type="SpatialMaterial" id=11]
 albedo_texture = ExtResource( 10 )
 
-[sub_resource type="SpatialMaterial" id=22]
+[sub_resource type="SpatialMaterial" id=12]
 albedo_texture = ExtResource( 9 )
 
-[sub_resource type="SpatialMaterial" id=24]
+[sub_resource type="SpatialMaterial" id=13]
 albedo_texture = ExtResource( 11 )
 
 [node name="MeshLibrary" type="Spatial"]
 
 [node name="Street" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 25 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="Street"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Street/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="Pavement" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 4 )
 
 [node name="StaticBody" type="StaticBody" parent="Pavement"]
 
 [node name="CollisionShape" type="CollisionShape" parent="Pavement/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementE" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 9 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementE"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementE/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementN" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 11 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 6 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementN"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementN/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementSW" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 13 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 7 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementSW"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementSW/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementS" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 15 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 8 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementS"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementS/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementS2" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 17 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 9 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementS2"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementS2/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementNW" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 18 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 10 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementNW"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementNW/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementNE" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 20 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 11 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementNE"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementNE/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementSE" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 22 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 12 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementSE"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementSE/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="PavementW" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
-material/0 = SubResource( 24 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 13 )
 
 [node name="StaticBody" type="StaticBody" parent="PavementW"]
 
 [node name="CollisionShape" type="CollisionShape" parent="PavementW/StaticBody"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )

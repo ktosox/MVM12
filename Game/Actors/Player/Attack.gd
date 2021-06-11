@@ -12,7 +12,7 @@ func _ready():
 
 
 func strike():
-	var hits = $AttackBox.get_overlapping_areas()
+	var hits = $AttackBox.get_overlapping_bodies()
 
 	if hits.size() > 0 :
 		for n in hits :

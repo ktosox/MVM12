@@ -16,6 +16,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GM="*res://Managers/GameManager.tscn"
+EM="*res://Managers/EventManager.tscn"
 
 [display]
 
@@ -27,6 +28,13 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/AutoGrid/plugin.cfg" )
+
+[importer_defaults]
+
+texture_3d={
+"flags/filter": false,
+"flags/mipmaps": true
+}
 
 [layer_names]
 

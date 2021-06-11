@@ -7,14 +7,12 @@
 radius = 0.5
 height = 1.0
 
-[node name="Dummy" type="Spatial"]
-
-[node name="HitBox" type="Area" parent="."]
+[node name="Dummy" type="KinematicBody"]
 collision_layer = 32
-collision_mask = 4
+collision_mask = 2
 script = ExtResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="HitBox"]
+[node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33092, 0 )
 shape = SubResource( 1 )
 

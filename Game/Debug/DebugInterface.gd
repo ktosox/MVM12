@@ -19,3 +19,8 @@ func _ready():
 func _on_KillPlayer_pressed():
 	GM.player_died()
 	pass # Replace with function body.
+
+
+func _on_TestTextPrinter_text_entered(new_text):
+	EM.test_print(new_text)
+	pass # Replace with function body.

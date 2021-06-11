@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/window.png-eac5b018f09a4ece4ae29e52ab0009de.s3tc.stex"
-path.etc="res://.import/window.png-eac5b018f09a4ece4ae29e52ab0009de.etc.stex"
+path.s3tc="res://.import/wall_edge2.png-20b2112c1938713116c47cdc4691e611.s3tc.stex"
+path.etc="res://.import/wall_edge2.png-20b2112c1938713116c47cdc4691e611.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Levels/TestRoom/window.png"
-dest_files=[ "res://.import/window.png-eac5b018f09a4ece4ae29e52ab0009de.s3tc.stex", "res://.import/window.png-eac5b018f09a4ece4ae29e52ab0009de.etc.stex" ]
+source_file="res://Environment/Introduction/wall_edge2.png"
+dest_files=[ "res://.import/wall_edge2.png-20b2112c1938713116c47cdc4691e611.s3tc.stex", "res://.import/wall_edge2.png-20b2112c1938713116c47cdc4691e611.etc.stex" ]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

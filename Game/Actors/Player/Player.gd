@@ -20,8 +20,20 @@ func _physics_process(delta):
 	if (direction.length() > 0):
 		$Attack.rotation.y = atan2(direction.x,direction.y)
 	move_and_collide(Vector3(direction.x,0,direction.y) * moveSpeed * delta)
-	
-		
+	if direction.length()>0:
+		$AnimatedSprite3D.playing = true
+	else :
+		$AnimatedSprite3D.playing = false
+	if direction.y > 0.7 :
+		$AnimatedSprite3D.animation = "walkDown"
+	elif direction.y < -0.7 :
+		$AnimatedSprite3D.animation = "walkUp"
+	elif direction.x > 0.7 :
+		$AnimatedSprite3D.animation = "walkRight"
+	elif direction.x < -0.7:
+		$AnimatedSprite3D.animation = "walkLeft"
+	else:
+		$AnimatedSprite3D.animation = "idle"
 	pass
 
 func get_input():
@@ -29,6 +41,6 @@ func get_input():
 	dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	dir.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	dir = dir.normalized()
-
+	
 	return dir
 	pass

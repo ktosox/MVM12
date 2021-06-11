@@ -1,0 +1,30 @@
+{
+	"IntroDoor1":
+	{
+		"1":
+		{	
+			"type" : "action",
+			"conditions" 	: [{"playerHasPhone" : "1"}],
+			"reactions"	: [{"text" : "time to move on"},{"moveZ":"-3"}]
+		},
+		"2":
+		{
+			"type" : "enter",
+			"conditions"	: [{"playerHasPhone" : "0"}],
+			"reactions"	: [{"text" : "I have to find my phone first"}]
+		}
+	},
+	
+	"TableWithPhone" :
+	{
+		"1":
+		{
+			"type" : "action",
+			"conditions"	: [{"playerHasPhone" : "0"}],
+			"reactions"	: [{"text" : "Right, I forgot my phone"},{"playerHasPhone" : "1"}]
+		}
+	
+	}
+	
+}
+
