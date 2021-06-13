@@ -8,6 +8,11 @@
 
 config_version=4
 
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
 [application]
 
 config/name="Metroidvania Game"
@@ -27,7 +32,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/AutoGrid/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [importer_defaults]
 
