@@ -3,6 +3,7 @@ extends KinematicBody
 export var moveSpeed = 3.0
 
 var direction = Vector2()
+var previousDirection = "Down"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,14 +27,18 @@ func _physics_process(delta):
 		$AnimatedSprite3D.playing = false
 	if direction.y > 0.7 :
 		$AnimatedSprite3D.animation = "walkDown"
+		previousDirection = "Down"
 	elif direction.y < -0.7 :
 		$AnimatedSprite3D.animation = "walkUp"
+		previousDirection = "Up"
 	elif direction.x > 0.7 :
 		$AnimatedSprite3D.animation = "walkRight"
+		previousDirection = "Right"
 	elif direction.x < -0.7:
 		$AnimatedSprite3D.animation = "walkLeft"
+		previousDirection = "Left"
 	else:
-		$AnimatedSprite3D.animation = "idle"
+		$AnimatedSprite3D.animation = "idle" + previousDirection
 	pass
 
 func get_input():
