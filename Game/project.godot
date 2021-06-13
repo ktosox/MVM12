@@ -45,6 +45,10 @@ texture_3d={
 3d_physics/layer_9="Walls"
 3d_physics/layer_10="Objects"
 
+[locale]
+
+translations=PoolStringArray( "res://Resources/Events/Dialog.en.translation" )
+
 [physics]
 
 common/enable_pause_aware_picking=true

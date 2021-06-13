@@ -56,7 +56,7 @@ func process_event(name,type):
 func process_reaction(reactions):
 	for k in reactions :
 		if k == "text" :
-			print_dialog(reactions[k])
+			print_dialog(tr(reactions[k]))
 		if k == "moveZ" :
 			GM.currentPlayer.translate(Vector3(0,0,int(reactions[k])))
 		if k == "moveX" :

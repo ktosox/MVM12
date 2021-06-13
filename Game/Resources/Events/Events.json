@@ -5,13 +5,13 @@
 		{	
 			"type" : "action",
 			"conditions" 	: [{"playerHasPhone" : "1"}],
-			"reactions"	: [{"text" : "time to move on"},{"moveZ":"-3"}]
+			"reactions"	: [{"moveZ":"-2"}]
 		},
 		"2":
 		{
 			"type" : "enter",
 			"conditions"	: [{"playerHasPhone" : "0"}],
-			"reactions"	: [{"text" : "I have to find my phone first"}]
+			"reactions"	: [{"text" : "Where did I leave my phone?"}]
 		}
 	},
 	
@@ -21,9 +21,18 @@
 		{
 			"type" : "action",
 			"conditions"	: [{"playerHasPhone" : "0"}],
-			"reactions"	: [{"text" : "Right, I forgot my phone"},{"playerHasPhone" : "1"}]
+			"reactions"	: [{"text" : "There it is! Time to leave this place."},{"playerHasPhone" : "1"}]
 		}
 	
+	},
+	"phoneNotification" :
+	{
+		"1":
+		{
+			"type" : "enter",
+			"conditions"	: [{"introductionComplete" : "0"}],
+			"reactions"	: [{"text" : "What is this weird update on my phone?!"},{"introductionComplete" : "1"}]
+		}
 	}
 	
 }

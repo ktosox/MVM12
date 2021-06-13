@@ -135,8 +135,13 @@ EventName = "IntroDoor1"
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12477, 0, 2.79973 )
 EventName = "TableWithPhone"
 
+[node name="EventArea3" parent="Events" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.06636, 0.119092, -8.81097 )
+EventName = "phoneNotification"
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.571, 0.261469, -2.393 )
 
 [editable path="Events/EventArea"]
 [editable path="Events/EventArea2"]
+[editable path="Events/EventArea3"]
