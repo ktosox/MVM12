@@ -11,7 +11,7 @@
 		{
 			"type" : "enter",
 			"conditions"	: [{"playerHasPhone" : "0"}],
-			"reactions"	: [{"text" : "Where did I leave my phone?"}]
+			"reactions"	: [{"text" : "INTRO1"}]
 		}
 	},
 	
@@ -21,7 +21,7 @@
 		{
 			"type" : "action",
 			"conditions"	: [{"playerHasPhone" : "0"}],
-			"reactions"	: [{"text" : "There it is! Time to leave this place."},{"playerHasPhone" : "1"}]
+			"reactions"	: [{"text" : "INTRO2"},{"playerHasPhone" : "1"}]
 		}
 	
 	},
@@ -31,7 +31,7 @@
 		{
 			"type" : "enter",
 			"conditions"	: [{"introductionComplete" : "0"}],
-			"reactions"	: [{"text" : "What is this weird update on my phone?!"},{"introductionComplete" : "1"}]
+			"reactions"	: [{"text" : "INTRO3"},{"introductionComplete" : "1"}]
 		}
 	}
 	
