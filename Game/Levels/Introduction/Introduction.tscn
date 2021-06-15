@@ -190,6 +190,9 @@ collision_mask = 0
 shape = SubResource( 16 )
 
 [editable path="Events/EventArea4"]
+
 [editable path="Events/EventArea"]
+
 [editable path="Events/EventArea2"]
+
 [editable path="Events/EventArea3"]

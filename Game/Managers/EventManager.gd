@@ -68,6 +68,10 @@ func process_reaction(reactions):
 
 
 	pass
+
+func reset_game():
+	playerHasPhone = false
+	introductionComplete = false
 	
 func print_dialog(text):
 	#this is very unsafe and needs to check if dialogScene exists to avoid error

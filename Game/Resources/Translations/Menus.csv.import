@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://Resources/Translations/Menus.en.translation", "res://Resources/Translations/Menus.da.translation", "res://Resources/Translations/Menus.es.translation" ]
+
+source_file="res://Resources/Translations/Menus.csv"
+dest_files=[ "res://Resources/Translations/Menus.en.translation", "res://Resources/Translations/Menus.da.translation", "res://Resources/Translations/Menus.es.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

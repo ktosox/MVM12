@@ -10,6 +10,7 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
+
 }
 
 [application]
@@ -51,7 +52,7 @@ texture_3d={
 
 [locale]
 
-translations=PoolStringArray( "res://Resources/Events/Dialog.en.translation" )
+translations=PoolStringArray( "res://Resources/Translations/Dialog.en.translation", "res://Resources/Translations/Dialog.da.translation", "res://Resources/Translations/Dialog.es.translation", "res://Resources/Translations/Menus.da.translation", "res://Resources/Translations/Menus.en.translation", "res://Resources/Translations/Menus.es.translation" )
 
 [physics]
 
