@@ -14,6 +14,8 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		$Attack.strike()
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().change_scene("res://Menus/MainMenu.tscn")
 
 func _physics_process(delta):
 	 

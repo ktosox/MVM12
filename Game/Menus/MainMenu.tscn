@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Menus/MainMenu.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0.6, 0.890196, 0.890196, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemContainer" type="VBoxContainer" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 1230.0
+margin_bottom = 670.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="ItemContainer"]
+margin_right = 1180.0
+margin_bottom = 20.0
+text = "MAIN_PLAY"
+
+[node name="LanguageButton" type="Button" parent="ItemContainer"]
+margin_top = 24.0
+margin_right = 1180.0
+margin_bottom = 44.0
+text = "MAIN_SET_LANGUAGE"
+[connection signal="pressed" from="ItemContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="ItemContainer/LanguageButton" to="." method="_on_LanguageButton_pressed"]
