@@ -4,6 +4,8 @@ export var moveSpeed = 3.0
 
 var direction = Vector2()
 var previousDirection = "Down"
+var attacking = false
+var currentItem = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +15,9 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
+		attacking = true
 		$Attack.strike()
+		$AnimationTimer.start()
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene("res://Menus/MainMenu.tscn")
 
@@ -23,24 +27,31 @@ func _physics_process(delta):
 	if (direction.length() > 0):
 		$Attack.rotation.y = atan2(direction.x,direction.y)
 	move_and_collide(Vector3(direction.x,0,direction.y) * moveSpeed * delta)
-	if direction.length()>0:
-		$AnimatedSprite3D.playing = true
-	else :
-		$AnimatedSprite3D.playing = false
+	var animatedAction = "walk"
+	var animateDirection = ""
+	if (attacking):
+		animatedAction = "attack"
+	#if direction.length()>0:
+	#	$AnimatedSprite3D.playing = true
+	#else :
+	#	$AnimatedSprite3D.playing = false
 	if direction.y > 0.7 :
-		$AnimatedSprite3D.animation = "walkDown"
-		previousDirection = "Down"
+		animateDirection = "Down"
 	elif direction.y < -0.7 :
-		$AnimatedSprite3D.animation = "walkUp"
-		previousDirection = "Up"
+		animateDirection = "Up"
 	elif direction.x > 0.7 :
-		$AnimatedSprite3D.animation = "walkRight"
-		previousDirection = "Right"
+		animateDirection = "Right"
 	elif direction.x < -0.7:
-		$AnimatedSprite3D.animation = "walkLeft"
-		previousDirection = "Left"
+		animateDirection = "Left"
+	elif animatedAction == "attack":
+		animateDirection = previousDirection
 	else:
-		$AnimatedSprite3D.animation = "idle" + previousDirection
+		animatedAction = "idle"
+	if (animateDirection!=""):
+		previousDirection = animateDirection
+	else:
+		animateDirection = previousDirection
+	$AnimatedSprite3D.animation = animatedAction + animateDirection + currentItem
 	pass
 
 func get_input():
@@ -51,3 +62,8 @@ func get_input():
 	
 	return dir
 	pass
+
+
+func _on_Timer_timeout():
+	# Used to switch out of animations with a length
+	attacking = false
