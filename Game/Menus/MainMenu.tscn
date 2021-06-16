@@ -32,10 +32,17 @@ margin_right = 1180.0
 margin_bottom = 20.0
 text = "MAIN_PLAY"
 
-[node name="LanguageButton" type="Button" parent="ItemContainer"]
+[node name="ContinueButton" type="Button" parent="ItemContainer"]
 margin_top = 24.0
 margin_right = 1180.0
 margin_bottom = 44.0
+text = "MAIN_CONTINUE"
+
+[node name="LanguageButton" type="Button" parent="ItemContainer"]
+margin_top = 48.0
+margin_right = 1180.0
+margin_bottom = 68.0
 text = "MAIN_SET_LANGUAGE"
 [connection signal="pressed" from="ItemContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="ItemContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="ItemContainer/LanguageButton" to="." method="_on_LanguageButton_pressed"]

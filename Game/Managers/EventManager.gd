@@ -2,9 +2,13 @@ extends Node
 
 	# FLAGS #
 
-var playerHasPhone = false
+var defaultEventState = { # This is what the other two reset to
+	playerHasPhone = false,
+	introductionComplete = false
+}
 
-var introductionComplete = false
+var otherEventState = defaultEventState.duplicate()
+var eventState = defaultEventState.duplicate()
 
 var pathJSON = "res://Resources/Events/Events.json"
 
@@ -38,7 +42,7 @@ func process_event(name,type):
 			if (source[n].get("type") == type ) :
 				for z in source[n].get("conditions"):
 
-					if get(z.keys()[0]) == bool(int(z.values()[0])):
+					if eventState.get(z.keys()[0]) == bool(int(z.values()[0])):
 						for k in source[n].get("reactions") :
 							process_reaction(k)
 
@@ -63,15 +67,14 @@ func process_reaction(reactions):
 			GM.currentPlayer.translate(Vector3(int(reactions[k]),0,0))
 		if k == "moveY" :
 			GM.currentPlayer.translate(Vector3(0,int(reactions[k]),0))
-		elif get(k)!=null:
-			set(k,bool(reactions[k]))
+		elif eventState.get(k)!=null:
+			eventState [k] = bool(reactions[k])
 
 
 	pass
 
 func reset_game():
-	playerHasPhone = false
-	introductionComplete = false
+	eventState = defaultEventState.duplicate()
 	
 func print_dialog(text):
 	#this is very unsafe and needs to check if dialogScene exists to avoid error
