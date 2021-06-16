@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Environment/Introduction/IntroWallLong.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Environment/Introduction/IntroWallShort.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Environment/Introduction/board.png" type="Texture" id=10]
 [ext_resource path="res://Environment/Introduction/table2.png" type="Texture" id=11]
 [ext_resource path="res://Environment/Introduction/phone.png" type="Texture" id=12]
+[ext_resource path="res://Levels/Introduction/Introduction.gd" type="Script" id=13]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 10, 8 )
@@ -62,6 +63,7 @@ flags_use_shadow_to_opacity = true
 data = PoolVector3Array( -1.125, 1.5, 0.125, 1.125, 1.5, 0.125, -1.125, -1.5, 0.125, 1.125, 1.5, 0.125, 1.125, -1.5, 0.125, -1.125, -1.5, 0.125, 1.125, 1.5, -0.125, -1.125, 1.5, -0.125, 1.125, -1.5, -0.125, -1.125, 1.5, -0.125, -1.125, -1.5, -0.125, 1.125, -1.5, -0.125, 1.125, 1.5, 0.125, 1.125, 1.5, -0.125, 1.125, -1.5, 0.125, 1.125, 1.5, -0.125, 1.125, -1.5, -0.125, 1.125, -1.5, 0.125, -1.125, 1.5, -0.125, -1.125, 1.5, 0.125, -1.125, -1.5, -0.125, -1.125, 1.5, 0.125, -1.125, -1.5, 0.125, -1.125, -1.5, -0.125, 1.125, 1.5, 0.125, -1.125, 1.5, 0.125, 1.125, 1.5, -0.125, -1.125, 1.5, 0.125, -1.125, 1.5, -0.125, 1.125, 1.5, -0.125, -1.125, -1.5, 0.125, 1.125, -1.5, 0.125, -1.125, -1.5, -0.125, 1.125, -1.5, 0.125, 1.125, -1.5, -0.125, -1.125, -1.5, -0.125 )
 
 [node name="Introduction" type="Spatial"]
+script = ExtResource( 13 )
 
 [node name="WallsAndFloor" type="Spatial" parent="."]
 
@@ -188,6 +190,7 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="DeadEnd/StaticBody"]
 shape = SubResource( 16 )
+[connection signal="leavingLevel" from="Player" to="." method="beforeSceneExit"]
 
 [editable path="Events/EventArea4"]
 

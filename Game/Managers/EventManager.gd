@@ -4,11 +4,12 @@ extends Node
 
 var defaultEventState = { # This is what the other two reset to
 	playerHasPhone = false,
-	introductionComplete = false
+	introductionComplete = false,
+	elemsHidden = {}
 }
 
-var otherEventState = defaultEventState.duplicate()
-var eventState = defaultEventState.duplicate()
+var otherEventState = defaultEventState.duplicate(true)
+var eventState = defaultEventState.duplicate(true)
 
 var pathJSON = "res://Resources/Events/Events.json"
 
@@ -61,20 +62,40 @@ func process_reaction(reactions):
 	for k in reactions :
 		if k == "text" :
 			print_dialog(tr(reactions[k]))
-		if k == "moveZ" :
+		elif k == "moveZ" :
 			GM.currentPlayer.translate(Vector3(0,0,int(reactions[k])))
-		if k == "moveX" :
+		elif k == "moveX" :
 			GM.currentPlayer.translate(Vector3(int(reactions[k]),0,0))
-		if k == "moveY" :
+		elif k == "moveY" :
 			GM.currentPlayer.translate(Vector3(0,int(reactions[k]),0))
+		elif k == "hide" :
+			var level = GM.currentLevel
+			if level.has_method ("hideObject"):
+				if level.hideObject (reactions[k]):
+					eventState ["elemsHidden"][reactions[k]] = true
+		elif k == "show" :
+			var level = GM.currentLevel
+			if level.has_method ("showObject"):
+				if level.hideObject (reactions[k]):
+					eventState ["elemsHidden"][reactions[k]] = false
+		elif k == "resetVisibility" :
+			var level = GM.currentLevel
+			if level.has_method ("resetObjectVisibility"):
+				eventState ["elemsHidden"][reactions[k]] = level.hideObject (reactions[k])
 		elif eventState.get(k)!=null:
 			eventState [k] = bool(reactions[k])
 
 
 	pass
 
-func reset_game():
-	eventState = defaultEventState.duplicate()
+func reset_game(resetTo=null):
+	if resetTo == null:
+		resetTo = defaultEventState
+	eventState = resetTo.duplicate(true)
+	var currentLevel = GM.currentLevel
+	if currentLevel != null:
+		currentLevel.resetAllVisibility(resetTo["elemsHidden"])
+	# else: print ("Could not reset the level, because there is no level!")
 	
 func print_dialog(text):
 	#this is very unsafe and needs to check if dialogScene exists to avoid error

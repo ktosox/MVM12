@@ -7,6 +7,7 @@ var previousDirection = "Down"
 var attacking = false
 var currentItem = ""
 
+signal leavingLevel
 
 func loadState(oldState):
 	if oldState == null:
@@ -16,7 +17,8 @@ func loadState(oldState):
 		return
 	self.translation = playerState ["pos"]
 	previousDirection= playerState ["dir"]
-	EM.eventState = oldState.duplicate()
+	currentItem = playerState ["item"]
+	EM.reset_game(oldState)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,7 +30,8 @@ func _ready():
 func updateState():
 	var playerState = {
 		pos = self.translation,
-		dir = previousDirection
+		dir = previousDirection,
+		item = currentItem
 	}
 	EM.eventState ["playerState"] = playerState
 	return playerState
@@ -40,12 +43,13 @@ func _input(event):
 		$AnimationTimer.start()
 	if event.is_action_pressed("ui_cancel"):
 		updateState()
+		emit_signal("leavingLevel")
 		get_tree().change_scene("res://Menus/MainMenu.tscn")
 	if event.is_action_pressed("ui_home"):
 		loadState(EM.otherEventState)
 	if event.is_action_pressed("ui_end"):
 		updateState()
-		EM.otherEventState = EM.eventState.duplicate()
+		EM.otherEventState = EM.eventState.duplicate(true)
 
 func _physics_process(delta):
 	 
@@ -57,10 +61,6 @@ func _physics_process(delta):
 	var animateDirection = ""
 	if (attacking):
 		animatedAction = "attack"
-	#if direction.length()>0:
-	#	$AnimatedSprite3D.playing = true
-	#else :
-	#	$AnimatedSprite3D.playing = false
 	if direction.y > 0.7 :
 		animateDirection = "Down"
 	elif direction.y < -0.7 :
