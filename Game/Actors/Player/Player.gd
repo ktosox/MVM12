@@ -7,6 +7,11 @@ var previousDirection = "Down"
 var attacking = false
 var currentItem = ""
 
+var damageMultipliers = {}
+var healthPoints= 1
+var damagePower = 1
+var damageType  = 0
+
 signal leavingLevel
 
 func loadState(oldState):
@@ -26,6 +31,18 @@ func _ready():
 	var oldState = EM.eventState
 	loadState(oldState)
 	pass # Replace with function body.
+
+func calculateDamage (amount, type):
+	var multiplier = damageMultipliers.get(type)
+	if multiplier == null:
+		return amount
+	return ceil (amount * multiplier)
+
+func damage(power,type=0):
+	print(name, " got hit with an attack, power: ",power," and type: ",type)
+	healthPoints -= calculateDamage(power, type)
+	if healthPoints < 0:
+		GM.player_died()
 
 func updateState():
 	var playerState = {
