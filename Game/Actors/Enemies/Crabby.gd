@@ -7,3 +7,4 @@ func _ready():
 	healthPoints = 5
 	# damageMultipliers = {}
 
+

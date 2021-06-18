@@ -8,9 +8,11 @@ var attacking = false
 var currentItem = ""
 
 var damageMultipliers = {}
-var healthPoints= 1
+var healthPoints= 10
+var maxHealth = 10
 var damagePower = 1
 var damageType  = 0
+var teams = ["player"]
 
 signal leavingLevel
 
@@ -39,9 +41,10 @@ func calculateDamage (amount, type):
 	return ceil (amount * multiplier)
 
 func damage(power,type=0):
-	print(name, " got hit with an attack, power: ",power," and type: ",type)
+	#print(name, " got hit with an attack, power: ",power," and type: ",type)
 	healthPoints -= calculateDamage(power, type)
 	if healthPoints < 0:
+		healthPoints = maxHealth
 		GM.player_died()
 
 func updateState():
