@@ -21,7 +21,7 @@
 		{
 			"type" : "action",
 			"conditions"	: [{"playerHasPhone" : "0"}],
-			"reactions"	: [{"text" : "INTRO2"},{"playerHasPhone" : "1"}]
+			"reactions"	: [{"text" : "INTRO2"},{"playerHasPhone" : "1"}, {"hide": "Phone"}]
 		}
 	
 	},

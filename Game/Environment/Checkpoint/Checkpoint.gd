@@ -7,11 +7,12 @@ func _ready():
 	pass # Replace with function body.
 
 
-func player_enetered():
+func player_entered():
 	GM.update_checkpoint(self)
+	$CheckpointSprite.animation = "active"
 	pass
 
 
 func _on_Checkpoint_body_entered(body):
-	player_enetered()
+	player_entered()
 	pass # Replace with function body.

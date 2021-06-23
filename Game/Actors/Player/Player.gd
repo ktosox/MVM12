@@ -7,11 +7,54 @@ var previousDirection = "Down"
 var attacking = false
 var currentItem = ""
 
+var damageMultipliers = {}
+var healthPoints= 10
+var maxHealth = 10
+var damagePower = 1
+var damageType  = 0
+var teams = ["player"]
+
+signal leavingLevel
+
+func loadState(oldState):
+	if oldState == null:
+		return
+	var playerState = oldState.get("playerState")
+	if playerState == null:
+		return
+	self.translation = playerState ["pos"]
+	previousDirection= playerState ["dir"]
+	currentItem = playerState ["item"]
+	EM.reset_game(oldState)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GM.currentPlayer = self
+	var oldState = EM.eventState
+	loadState(oldState)
 	pass # Replace with function body.
 
+func calculateDamage (amount, type):
+	var multiplier = damageMultipliers.get(type)
+	if multiplier == null:
+		return amount
+	return ceil (amount * multiplier)
+
+func damage(power,type=0):
+	#print(name, " got hit with an attack, power: ",power," and type: ",type)
+	healthPoints -= calculateDamage(power, type)
+	if healthPoints < 0:
+		healthPoints = maxHealth
+		GM.player_died()
+
+func updateState():
+	var playerState = {
+		pos = self.translation,
+		dir = previousDirection,
+		item = currentItem
+	}
+	EM.eventState ["playerState"] = playerState
+	return playerState
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
@@ -19,7 +62,14 @@ func _input(event):
 		$Attack.strike()
 		$AnimationTimer.start()
 	if event.is_action_pressed("ui_cancel"):
+		updateState()
+		emit_signal("leavingLevel")
 		get_tree().change_scene("res://Menus/MainMenu.tscn")
+	if event.is_action_pressed("ui_home"):
+		loadState(EM.otherEventState)
+	if event.is_action_pressed("ui_end"):
+		updateState()
+		EM.otherEventState = EM.eventState.duplicate(true)
 
 func _physics_process(delta):
 	 
@@ -31,10 +81,6 @@ func _physics_process(delta):
 	var animateDirection = ""
 	if (attacking):
 		animatedAction = "attack"
-	#if direction.length()>0:
-	#	$AnimatedSprite3D.playing = true
-	#else :
-	#	$AnimatedSprite3D.playing = false
 	if direction.y > 0.7 :
 		animateDirection = "Down"
 	elif direction.y < -0.7 :

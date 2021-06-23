@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Resources/Sprites/Enemies/Crabby.png" type="Texture" id=1]
-[ext_resource path="res://Actors/Enemies/HitBox.gd" type="Script" id=2]
+[ext_resource path="res://Actors/Enemies/Crabby.gd" type="Script" id=2]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.66709
@@ -15,72 +15,110 @@ region = Rect2( 0, 0, 34, 34 )
 [sub_resource type="AtlasTexture" id=3]
 flags = 3
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 34, 34 )
+region = Rect2( 68, 36, 34, 36 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 3
 atlas = ExtResource( 1 )
-region = Rect2( 34, 0, 34, 34 )
+region = Rect2( 102, 36, 34, 36 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 3
 atlas = ExtResource( 1 )
-region = Rect2( 68, 0, 34, 34 )
+region = Rect2( 136, 36, 34, 36 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 3
 atlas = ExtResource( 1 )
-region = Rect2( 102, 0, 34, 34 )
+region = Rect2( 34, 0, 34, 34 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 3
 atlas = ExtResource( 1 )
-region = Rect2( 136, 0, 34, 34 )
+region = Rect2( 68, 0, 34, 34 )
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="AtlasTexture" id=8]
+flags = 3
+atlas = ExtResource( 1 )
+region = Rect2( 102, 0, 34, 34 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 3
+atlas = ExtResource( 1 )
+region = Rect2( 34, 36, 34, 36 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 3
+atlas = ExtResource( 1 )
+region = Rect2( 0, 36, 34, 36 )
+
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": false,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 7 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "attack",
 "speed": 5.0
 } ]
 
-[sub_resource type="SphereShape" id=9]
+[sub_resource type="SphereShape" id=12]
 radius = 3.85749
+
+[sub_resource type="BoxShape" id=13]
 
 [node name="Crabby" type="KinematicBody"]
 collision_layer = 32
-collision_mask = 2
+collision_mask = 322
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33092, 0 )
+transform = Transform( 0.7, 0, 0, 0, 0.5, 0, 0, 0, 0.7, 0, 0.33092, -0.235217 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.333, 0 )
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.333, 0 )
 pixel_size = 0.05
-billboard = 2
-frames = SubResource( 8 )
-animation = "walk"
+frames = SubResource( 11 )
+animation = "die"
+frame = 2
 playing = true
 
 [node name="DetectionRange" type="Area" parent="."]
-collision_layer = 0
+collision_layer = 32
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="DetectionRange"]
-shape = SubResource( 9 )
+shape = SubResource( 12 )
 
+[node name="AttackRange" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.12, 0, 0, -0.121965 )
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="AttackRange"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0.5 )
+shape = SubResource( 13 )
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="AttackRecoveryTimer" type="Timer" parent="."]
+wait_time = 0.2
 [connection signal="body_entered" from="DetectionRange" to="." method="_on_DetectionRange_body_entered"]
 [connection signal="body_exited" from="DetectionRange" to="." method="_on_DetectionRange_body_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="timeout" from="AttackRecoveryTimer" to="." method="_on_AttackRecoveryTimer_timeout"]

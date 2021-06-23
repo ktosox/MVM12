@@ -20,6 +20,9 @@ func _on_PlayButton_pressed():
 	EM.reset_game()
 	get_tree().change_scene("res://Levels/Introduction/Introduction.tscn")
 
+func _on_ContinueButton_pressed():
+	get_tree().change_scene("res://Levels/Introduction/Introduction.tscn")
 
 func _on_LanguageButton_pressed(): # Change to the actual scene once it exists
 	get_tree().change_scene("res://Menus/LanguageMenu.tscn")
+
