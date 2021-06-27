@@ -4,7 +4,9 @@ signal enemyDies
 
 onready var restLocation = translation
 
-var target
+var target:Spatial
+
+var pathSource
 
 export var moveSpeed = 2.0
 export var turningSpeed = 30.0
@@ -21,6 +23,8 @@ var teams = ["aliens"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if GM.currentLevel.is_class("Navigation"):
+		pathSource = GM.currentLevel
 	pass # Replace with function body.
 
 func calculateDamage (amount, type):
@@ -51,7 +55,15 @@ func _physics_process(delta):
 				$AnimatedSprite3D.animation = "idle"
 			pass
 		"attack" :
-			direction =  target.translation - translation
+			if pathSource != null and target != null:
+				var navTarget = GM.currentLevel.get_closest_point(target.translation)
+				var path = GM.currentLevel.get_simple_path(translation,navTarget)
+				$Path.curve.clear_points()
+				for o in path:
+					$Path.curve.add_point(o)
+				direction = $Path.curve.interpolate(0,0.8) - translation
+			else:
+				direction =  target.translation - translation
 			var foundTarget = false
 			var new_y_rotation = rad2deg (atan2(direction.x, direction.z))
 			if new_y_rotation > rotation_degrees.y+turningSpeed*delta:
@@ -71,10 +83,14 @@ func _physics_process(delta):
 				$AnimatedSprite3D.animation = "attack"
 			else:
 				$AnimatedSprite3D.animation = "walk"
+
 	direction = direction.normalized()
 	move_and_slide(direction * moveSpeed)
 	
 	pass
+
+
+
 
 
 func damage(power,type=0):
