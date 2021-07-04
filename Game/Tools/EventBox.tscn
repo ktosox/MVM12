@@ -1,0 +1,93 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Tools/EventBox.gd" type="Script" id=1]
+
+[node name="EventBox" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 90 )
+size_flags_vertical = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Layout" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ID" type="HBoxContainer" parent="Layout"]
+margin_right = 1280.0
+margin_bottom = 14.0
+
+[node name="Name" type="Label" parent="Layout/ID"]
+margin_right = 23.0
+margin_bottom = 14.0
+text = "ID: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Layout/ID"]
+margin_left = 27.0
+margin_right = 27.0
+margin_bottom = 14.0
+
+[node name="Type" type="HBoxContainer" parent="Layout"]
+margin_top = 18.0
+margin_right = 1280.0
+margin_bottom = 32.0
+
+[node name="Name" type="Label" parent="Layout/Type"]
+margin_right = 38.0
+margin_bottom = 14.0
+text = "Type: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Layout/Type"]
+margin_left = 42.0
+margin_right = 42.0
+margin_bottom = 14.0
+
+[node name="Conditions" type="HBoxContainer" parent="Layout"]
+margin_top = 36.0
+margin_right = 1280.0
+margin_bottom = 50.0
+
+[node name="Name" type="Label" parent="Layout/Conditions"]
+margin_right = 76.0
+margin_bottom = 14.0
+text = "Conditions: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Layout/Conditions"]
+margin_left = 80.0
+margin_right = 80.0
+margin_bottom = 14.0
+
+[node name="Reactions" type="HBoxContainer" parent="Layout"]
+margin_top = 54.0
+margin_right = 1280.0
+margin_bottom = 68.0
+
+[node name="Name" type="Label" parent="Layout/Reactions"]
+margin_right = 70.0
+margin_bottom = 14.0
+text = "Reactions: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="Layout/Reactions"]
+margin_left = 74.0
+margin_right = 74.0
+margin_bottom = 14.0
