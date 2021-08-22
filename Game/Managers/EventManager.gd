@@ -8,7 +8,7 @@ var defaultEventState = { # This is what the other two reset to
 	elemsHidden = {}
 }
 
-var otherEventState = defaultEventState.duplicate(true)
+var otherEventState = defaultEventState.duplicate(true) # why is this here?
 var eventState = defaultEventState.duplicate(true)
 
 var pathJSON = "res://Resources/Events/Events.json"
@@ -47,12 +47,6 @@ func process_event(name,type):
 						for k in source[n].get("reactions") :
 							process_reaction(k)
 
-	#not yet implemented
-#	match type:
-#		"enter":
-#			print("player eneterd area ",name)
-#		"action":
-#			print("player made action in area ",name)
 	file.close()
 	pass
 	
@@ -82,8 +76,8 @@ func process_reaction(reactions):
 			var level = GM.currentLevel
 			if level.has_method ("resetObjectVisibility"):
 				eventState ["elemsHidden"][reactions[k]] = level.hideObject (reactions[k])
-		elif eventState.get(k)!=null:
-			eventState [k] = bool(reactions[k])
+		elif eventState.get(k)!=null: #this line checks if the event name matches an event flag
+			eventState [k] = bool(reactions[k]) #if it does, the flag is updated accordingly
 
 
 	pass
@@ -104,7 +98,7 @@ func print_dialog(text):
 	pass
 
 func test_print(text):
-	#body still missing
+
 	dialogScene.display(text)
 	pass
 

@@ -1,0 +1,39 @@
+{
+	"ABC":
+	{
+		"1":
+		{	
+			"type" : "action",
+			"conditions" 	: [{"playerHasPhone" : "1"}],
+			"reactions"	: [{"moveZ":"-2"}]
+		},
+		"2":
+		{
+			"type" : "enter",
+			"conditions"	: [{"playerHasPhone" : "0"}],
+			"reactions"	: [{"text" : "INTRO1"}]
+		}
+	},
+	
+	"TableWithPhone" :
+	{
+		"1":
+		{
+			"type" : "action",
+			"conditions"	: [{"playerHasPhone" : "0"}],
+			"reactions"	: [{"text" : "INTRO2"},{"playerHasPhone" : "1"}, {"hide": "Phone"}]
+		}
+	
+	},
+	"Dog":
+	{
+		"1":
+		{
+			"type" : "enter",
+			"conditions"	: [{"introductionComplete" : "0"},{"playerHasPhone" : "0"}],
+			"reactions"	: [{"text" : "INTRO3"},{"introductionComplete" : "1"}]
+		}
+	}
+	
+}
+

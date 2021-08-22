@@ -496,9 +496,11 @@ script = ExtResource( 3 )
 [node name="Dialog" parent="." instance=ExtResource( 2 )]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+centered = false
+offset = Vector2( -10, 0 )
 pixel_size = 0.05
 billboard = 2
+alpha_cut = 2
 frames = SubResource( 89 )
 animation = "attackUp"
 frame = 3
@@ -535,4 +537,5 @@ shape = SubResource( 91 )
 
 [node name="AnimationTimer" type="Timer" parent="."]
 wait_time = 0.8
+
 [connection signal="timeout" from="AnimationTimer" to="." method="_on_Timer_timeout"]

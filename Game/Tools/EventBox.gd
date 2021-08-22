@@ -12,13 +12,17 @@ func _ready():
 	$Layout/Type/Value.text = type
 	var conditionsText = ""
 	for c in conditions :
-		conditionsText = conditionsText + c.keys()[0]
-		conditionsText = conditionsText + " "
+		conditionsText += c.keys()[0]
+		conditionsText += " : "
+		conditionsText += c.values()[0]
+		conditionsText += ", "
 	$Layout/Conditions/Value.text = conditionsText
 	var reactionsText = ""
 	for c in reactions :
-		reactionsText = reactionsText + c.keys()[0]
-		reactionsText = reactionsText + " "
+		reactionsText += c.keys()[0]
+		reactionsText +=  " : "
+		reactionsText += c.values()[0]
+		reactionsText += ", "
 	$Layout/Reactions/Value.text = reactionsText
 	pass # Replace with function body.
 
